@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="update.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="navbar">
+        <div class="fisrt">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="addproduct.html">Add product</a></li>   
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Update product</h2>
+        <div class="form">
+            <form action="" id="productForm">
+                
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+
+                <label for="description">Description</label>
+                <textarea type="text" name="description" id="description"></textarea>
+
+                <label for="brand">Brand</label>
+                <input type="text" name="brand" id="brand">
+
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" required>
+
+                <select name="category" required id="category" >
+                <option value="">Select Category</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Wearables">Wearables</option>
+                <option value="Computers & Accessories">Computers & Accessories</option>
+                <option value="Audio">Audio</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Home & Living">Home & Living</option>
+                <option value="Sports & Fitness">Sports & Fitness</option>
+                <option value="Books & Stationery">Books & Stationery</option>
+                <option value="Automotive">Automotive</option>
+                <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                </select>
+
+                <input type="date" name="releaseDate" id="date" required>
+
+                <input type="number" name="quantity" placeholder="Quantity" id="quantity">
+
+                <div class="image-container">
+                    <img id="preview" alt="Product Image">
+                    <input type="file" name="image" accept="image/*" id="image">
+                </div>
+                <button type="submit" id="update">Update Product</button>
+            </form>
+        </div>
+    </div>
+    <script src="update.js"></script>
+    
+</body>
+</html>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="product.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="navbar">
+        <div class="fisrt">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="addproduct.html">Add product</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container">
+
+        <div class="productdiv">
+
+        </div>
+    </div>
+
+    <script >
+
+        const productdiv = document.querySelector(".productdiv")
+
+        const params = new URLSearchParams(window.location.search)
+        const prod_id = params.get('id')
+
+        function loadtData()
+        {
+            fetch(`http://localhost:8080/api/product/${prod_id}`)
+            .then(response=>response.json())
+            .then(product => displayProduct(product));
+            
+        }
+
+        function displayProduct(p)
+        {
+            productdiv.innerHTML = `
+            <div class="card">
+                <div class="image-section">
+                    <img src="/api/product/${p.id}/image" alt="${p.name}">
+                </div>
+
+                <div class="details-section">
+                    <h1>${p.brand}</h1>
+                    <h2>${p.name}</h2>
+                    <h3>Category: ${p.category}</h3>
+                    <p class="description">${p.description}</p>
+                    <p class="price">₹ ${p.price}</p>
+                    <p class="release-date">Product listed on: ${p.releaseDate}</p>
+                    <p class="quantity">Quantity: ${p.quantity}</p>
+
+                    <div class="status">
+                        ${p.available 
+                            ? "<span class='available'>Available</span>" 
+                            : "<span class='not_available'>Out of Stock</span>"}
+                    </div>
+
+                    <button onclick="Update(${p.id})">Update</button>
+                    <button onclick="Delete(${p.id})">Delete</button>
+                </div>
+            </div>
+            `;
+
+        }
+        function Update(id)
+        {
+            window.location.href=`update.html?id=${id}`
+        }
+        function Delete(id)
+        {
+            fetch(`http://localhost:8080/api/product/${id}`,{method:"DELETE"})
+            .then(response=>response.text())
+            .then(data=>{
+               alert("Deleted Successfully");
+                window.location.href = "index.html";
+            })
+        }
+        loadtData();
+    </script>
+</body>
+</html>
