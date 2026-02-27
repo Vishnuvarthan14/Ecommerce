@@ -32,7 +32,7 @@
 
         function loadtData()
         {
-            fetch(`http://localhost:8080/api/product/${prod_id}`)
+            fetch(`/api/product/${prod_id}`)
             .then(response=>response.json())
             .then(product => displayProduct(product));
             
@@ -74,7 +74,7 @@
         }
         function Delete(id)
         {
-            fetch(`http://localhost:8080/api/product/${id}`,{method:"DELETE"})
+            fetch(`/api/product/${id}`,{method:"DELETE"})
             .then(response=>response.text())
             .then(data=>{
                alert("Deleted Successfully");
